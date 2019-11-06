@@ -2,7 +2,7 @@
 
 # Copy the contents of this directory (recursively) to the root
 mkdir ~/.react-wp
-cp . -a -r ~/.react-wp
+cp -p * ~/.react-wp
 
 # Create alias for our CLI
 echo "" >> ~/.bash_profile
@@ -15,4 +15,4 @@ echo 'alias react-wp="sh ~/.react-wp/cli.sh"' >> ~/.bash_profile
 echo "react-wp cli installed!"
 react-cli --help
 
-# TODO: remove this directory 
+# TODO: remove this directory
