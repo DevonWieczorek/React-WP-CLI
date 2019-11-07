@@ -10,7 +10,7 @@ source npm.sh
 # CLI Info
 APP_NAME="react-wp"
 APP_DESCRIPTION="CLI for updating .env files to configure new headless Wordpress sites"
-APP_VERSION="0.1.0"
+APP_VERSION="0.1.1"
 
 # Flags
 HELP=false
