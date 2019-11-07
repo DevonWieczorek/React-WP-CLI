@@ -6,6 +6,7 @@ source welcome.sh
 source mkfiles.sh
 source configure.sh
 source npm.sh
+source update-core.sh
 
 # CLI Info
 APP_NAME="react-wp"
@@ -17,6 +18,7 @@ HELP=false
 VERSION=false
 CONFIGURE=false
 INIT=false
+UPDATE=false
 
 # Variables
 env="*"
@@ -44,6 +46,10 @@ do
         shift
         env=$1
     ;;
+    -u|--update)
+        UPDATE=true
+        shift
+    ;;
   esac
 done
 
@@ -55,6 +61,8 @@ if $VERSION; then version; fi
 if $INIT; then init $env; fi
 
 if $CONFIGURE; then configure $env; fi
+
+if $UPDATE; then updateCore; fi
 
 # We reached the end with no recognizable command
 echo "Unknown Command: '$*'"

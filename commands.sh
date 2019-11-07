@@ -85,6 +85,7 @@ help() {
     command "-i" "--init" "Initialize a new project"
     command "-c" "--configure" "Configure options for environment(s)"
     command "" "" "     Usage: $APP_NAME [environment || *]"
+    command "-u" "--update" "Update core code from React Wordpress Microsite"
 
     # Boiler plate, do not remove
     print_all_commands
