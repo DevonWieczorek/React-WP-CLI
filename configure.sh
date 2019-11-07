@@ -102,8 +102,8 @@ configure(){
     default_meta_type=${default_meta_type:-""}
     sed -i "" "s|##REACT_APP_DEFAULT_TYPE##|$default_meta_type|g" $dest
 
-    read -p "Default Site URL [https://localhost:3000]: " $default_site_url
-    default_site_url=${default_site_url:-"https://localhost:3000"}
+    read -p "Default Site URL [https://makebettermoney.com]: " $default_site_url
+    default_site_url=${default_site_url:-"https://makebettermoney.com"}
     sed -i "" "s|##REACT_APP_DEFAULT_URL##|$default_site_url|g" $dest
 
 
