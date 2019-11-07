@@ -94,7 +94,7 @@ help() {
 }
 
 version() {
-    printf "$APP_NAME cli\nVersion: $APP_VERSION"
+    printf "\n$APP_NAME cli\nVersion: $APP_VERSION\n\n"
     exit 0
 }
 
