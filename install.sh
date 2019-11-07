@@ -16,4 +16,4 @@ printf "\nreact-wp cli installed!\n"
 react-cli --help
 
 # Remove this directory after copying to root
-# rm -rf $(pwd)
+rm -rf $(pwd)
