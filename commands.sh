@@ -100,8 +100,7 @@ version() {
 
 init() {
     # Pull in project from github
-    echo "Would call fetchRepo"
-    # fetchRepo
+    fetchRepo
 
     # Program Info
     welcome
@@ -113,8 +112,7 @@ init() {
     configure $1
 
     # Build the project and start it
-    echo "Would call build"
-    # build
+    build
 
     exit 0
 }
