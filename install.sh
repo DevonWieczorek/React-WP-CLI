@@ -12,7 +12,7 @@ echo 'alias react-wp="sh ~/.react-wp/cli.sh"' >> ~/.bash_profile
 . ~/.bash_profile
 
 # Print the help screen
-echo "react-wp cli installed!"
+printf "\nreact-wp cli installed!\n"
 react-cli --help
 
 # Remove this directory after copying to root
