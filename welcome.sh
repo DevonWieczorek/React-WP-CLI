@@ -3,7 +3,7 @@
 welcome(){
     clear
     echo "############################################################"
-    echo " $APP_NAME"
+    echo " $APP_NAME cli"
     echo " Version: $APP_VERSION"
     echo " $APP_DESCRIPTION"
     echo ""

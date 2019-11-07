@@ -94,7 +94,7 @@ help() {
 }
 
 version() {
-    echo "$APP_NAME Version: $APP_VERSION"
+    printf "$APP_NAME cli\nVersion: $APP_VERSION"
     exit 0
 }
 
