@@ -84,7 +84,7 @@ help() {
     command "-v" "--version" "Display the version"
     command "-i" "--init" "Initialize a new project"
     command "-c" "--configure" "Configure options for environment(s)"
-    command "" "" "     Usage: $APP_NAME [environments...]"
+    command "" "" "     Usage: $APP_NAME [environment || *]"
 
     # Boiler plate, do not remove
     print_all_commands
