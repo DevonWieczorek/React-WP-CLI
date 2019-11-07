@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 source commands.sh
-# source clone-repo.sh
+source clone-repo.sh
 source welcome.sh
 source mkfiles.sh
 source configure.sh
-# source npm.sh
+source npm.sh
 
 # CLI Info
 APP_NAME="react-wp"
