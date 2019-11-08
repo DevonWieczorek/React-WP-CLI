@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 configure(){
-    dest=.env.$env
+    dest=$(pwd)/.env.$env
 
     # Wordpress
     printf "\n\nConfiguring Wordpress related variables:\n\n"

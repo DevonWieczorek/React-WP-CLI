@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
+wd="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 makeAll(){
     ENVIRONMENTS=('development' 'staging' 'production')
-    for i in "${ENVIRONMENTS[@]}"; do cat .config.env > ".env.$i"; done
+    for i in "${ENVIRONMENTS[@]}"; do cat $wd/.config.env > "$(pwd)/.env.$i"; done
 }
 
 makeFiles() {
@@ -12,7 +14,7 @@ makeFiles() {
         then
             makeAll
         else
-            cat .config.env > ".env.$env"
+            cat $wd/.config.env > "$(pwd)/.env.$env"
         fi
     else
         makeAll

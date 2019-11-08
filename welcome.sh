@@ -2,6 +2,7 @@
 
 welcome(){
     clear
+    echo ""
     echo "############################################################"
     echo " $APP_NAME cli"
     echo " Version: $APP_VERSION"
@@ -13,4 +14,5 @@ welcome(){
     echo " - All strings with spaces spaces should be double-quoted"
     echo "   (We are in the command line after all!)"
     echo "############################################################"
+    echo ""
 }
