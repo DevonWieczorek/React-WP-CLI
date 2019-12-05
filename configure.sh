@@ -91,11 +91,11 @@ configure(){
     sed -i "" "s|##REACT_APP_DEFAULT_DESCRIPTION##|$default_meta_description|g" $dest
 
     read -p "Default Meta Keywords [ ]: " $default_meta_keywords
-    default_meta_keywords=${default_meta_keywords:-""}
+    default_meta_keywords=${default_meta_keywords:-" "}
     sed -i "" "s|##REACT_APP_DEFAULT_KEYWORDS##|$default_meta_keywords|g" $dest
 
     read -p "Default Meta Subject [ ]: " $default_meta_subject
-    default_meta_subject=${default_meta_subject:-""}
+    default_meta_subject=${default_meta_subject:-" "}
     sed -i "" "s|##REACT_APP_DEFAULT_SUBJECT##|$default_meta_subject|g" $dest
 
     read -p "Default Meta Robots [noindex, nofollow]: " $default_meta_robots
@@ -107,7 +107,7 @@ configure(){
     sed -i "" "s|##REACT_APP_DEFAULT_SITENAME##|$default_meta_sitename|g" $dest
 
     read -p "Default Meta Type [ ]: " $default_meta_type
-    default_meta_type=${default_meta_type:-""}
+    default_meta_type=${default_meta_type:-" "}
     sed -i "" "s|##REACT_APP_DEFAULT_TYPE##|$default_meta_type|g" $dest
 
     read -p "Default Site URL [https://makebettermoney.com]: " $default_site_url
