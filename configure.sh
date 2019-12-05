@@ -10,17 +10,25 @@ configure(){
     default_api_endpoint=${default_api_endpoint:-https://thesmartwallet.com/wp-json/wp/v2}
     sed -i "" "s|##REACT_APP_DEFAULT_ENDPOINT##|$default_api_endpoint|g" $dest
 
-    read -p "Default Wordpress Tag [make-better-money]: " $default_site_tag
-    default_site_tag=${default_site_tag:-make-better-money}
+    read -p "Default Wordpress Tag [microsite]: " $default_site_tag
+    default_site_tag=${default_site_tag:-microsite}
     sed -i "" "s|##REACT_APP_DEFAULT_SITETAG##|$default_site_tag|g" $dest
 
-    read -p "Default Wordpress Tag ID [1301]: " $default_tag_id
-    default_tag_id=${default_tag_id:-1301}
+    read -p "Default Wordpress Tag ID [1355]: " $default_tag_id
+    default_tag_id=${default_tag_id:-1355}
     sed -i "" "s|##REACT_APP_DEFAULT_TAG_ID##|$default_tag_id|g" $dest
 
     read -p "Default Wordpress Category IDs (Comma Separated - No Spaces) [30,31,33]: " $posts_category_ids
     posts_category_ids=${posts_category_ids:-30,31,33}
     sed -i "" "s|##REACT_APP_DEFAULT_CATEGORY_IDS##|$posts_category_ids|g" $dest
+
+    read -p "Default Privacy Policy Page ID [711]: " $privacy_policy_id
+    privacy_policy_id=${privacy_policy_id:-711}
+    sed -i "" "s|##REACT_APP_DEFAULT_PRIVACY_POLICY_ID##|$privacy_policy_id|g" $dest
+
+    read -p "Default Terms & Conditions Page ID [713]: " $terms_conditions_id
+    terms_conditions_id=${terms_conditions_id:-713}
+    sed -i "" "s|##REACT_APP_DEFAULT_TERMS_CONDITIONS_ID##|$terms_conditions_id|g" $dest
 
     read -p "Max Posts per Page [12]: " $posts_per_page
     posts_per_page=${posts_per_page:-12}
@@ -105,6 +113,26 @@ configure(){
     read -p "Default Site URL [https://makebettermoney.com]: " $default_site_url
     default_site_url=${default_site_url:-"https://makebettermoney.com"}
     sed -i "" "s|##REACT_APP_DEFAULT_URL##|$default_site_url|g" $dest
+
+
+    # Google Tag Manager
+    printf "\n\nConfiguring Google Tag Manager:\n\n"
+
+    read -p "Default GTM Site ID [GTM-MPF9GCN]: " $default_gtm_id
+    default_gtm_id=${default_gtm_id:-"GTM-MPF9GCN"}
+    sed -i "" "s|##REACT_APP_DEFAULT_GTM_SITE_ID##|$default_gtm_id|g" $dest
+
+
+    # AWS
+    printf "\n\nConfiguring AWS for Deployment:\n\n"
+
+    read -p "Default AWS Bucket [tsw-microsites-bucket]: " $default_aws_bucket
+    default_aws_bucket=${default_aws_bucket:-"tsw-microsites-bucket"}
+    sed -i "" "s|##REACT_APP_DEFAULT_GTM_SITE_ID##|$default_aws_bucket|g" $dest
+
+    read -p "Default Bucket Directory [making-better-money]: " $default_bucket_directory
+    default_bucket_directory=${default_bucket_directory:-"making-better-money"}
+    sed -i "" "s|##REACT_APP_DEFAULT_AWS_DIRECTORY##|$default_bucket_directory|g" $dest
 
 
     printf "\nEnvironment Configured!\n"
