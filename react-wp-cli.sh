@@ -6,7 +6,6 @@ source $wd/clone-repo.sh
 source $wd/welcome.sh
 source $wd/mkfiles.sh
 source $wd/configure.sh
-source $wd/set-publish.sh
 source $wd/npm.sh
 source $wd/update-core.sh
 
