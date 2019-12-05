@@ -129,10 +129,22 @@ configure(){
     read -p "Default AWS Bucket [tsw-microsites-bucket]: " $default_aws_bucket
     default_aws_bucket=${default_aws_bucket:-"tsw-microsites-bucket"}
     sed -i "" "s|##REACT_APP_DEFAULT_GTM_SITE_ID##|$default_aws_bucket|g" $dest
+    AWS_BUCKET=$default_aws_bucket # Set var for global access
 
     read -p "Default Bucket Directory [making-better-money]: " $default_bucket_directory
     default_bucket_directory=${default_bucket_directory:-"making-better-money"}
     sed -i "" "s|##REACT_APP_DEFAULT_AWS_DIRECTORY##|$default_bucket_directory|g" $dest
+    AWS_DIRECTORY=$default_bucket_directory # Set var for global access
+
+
+    # Change into the root of the project
+    # (Into node_modules, then one level up)
+    cd $(npm root) && cd ../
+
+    # Update package.json with the proper publish command
+    printf "\nUpdating package.json...\n"
+    node set-publish.js $AWS_BUCKET $AWS_DIRECTORY
+    printf "\npackage.json Updated!\n"
 
 
     printf "\nEnvironment Configured!\n"

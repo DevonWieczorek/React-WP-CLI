@@ -6,7 +6,7 @@ build() {
 
     printf "\nRunning Build...\n"
     npm run-script build
-    
+
     printf "\nStarting App...\n"
     npm start
 }

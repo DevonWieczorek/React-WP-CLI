@@ -6,13 +6,14 @@ source $wd/clone-repo.sh
 source $wd/welcome.sh
 source $wd/mkfiles.sh
 source $wd/configure.sh
+source $wd/set-publish.sh
 source $wd/npm.sh
 source $wd/update-core.sh
 
 # CLI Info
 APP_NAME="react-wp"
 APP_DESCRIPTION="CLI for updating .env files to configure new headless Wordpress sites"
-APP_VERSION="0.3.1"
+APP_VERSION="0.4.0"
 
 # Flags
 HELP=false
@@ -23,6 +24,8 @@ UPDATE=false
 
 # Variables
 env="*"
+AWS_BUCKET=""
+AWS_DIRECTORY=""
 
 # Loop through arguments and set appropriate flags as true
 for i in "$@"
