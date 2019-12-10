@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 configure(){
+    env=${env:-*}
     dest=$(pwd)/.env.$env
 
     # Wordpress
@@ -82,8 +83,8 @@ configure(){
     # Meta
     printf "\n\nConfiguring Meta related variables:\n\n"
 
-    read -p "Default Meta Title [Make Better Money]: " $default_meta_title
-    default_meta_title=${default_meta_title:-"Make Better Money"}
+    read -p "Default Meta Title [Making Better Money]: " $default_meta_title
+    default_meta_title=${default_meta_title:-"Making Better Money"}
     sed -i "" "s|##REACT_APP_DEFAULT_TITLE##|$default_meta_title|g" $dest
 
     read -p "Default Meta Description [$default_meta_title]: " $default_meta_description
@@ -110,8 +111,8 @@ configure(){
     default_meta_type=${default_meta_type:-" "}
     sed -i "" "s|##REACT_APP_DEFAULT_TYPE##|$default_meta_type|g" $dest
 
-    read -p "Default Site URL [https://makebettermoney.com]: " $default_site_url
-    default_site_url=${default_site_url:-"https://makebettermoney.com"}
+    read -p "Default Site URL [https://makingbettermoney.com]: " $default_site_url
+    default_site_url=${default_site_url:-"https://makingbettermoney.com"}
     sed -i "" "s|##REACT_APP_DEFAULT_URL##|$default_site_url|g" $dest
 
 
@@ -143,7 +144,7 @@ configure(){
 
     # Update package.json with the proper publish command
     printf "\nUpdating package.json...\n"
-    node set-publish.js $AWS_BUCKET $AWS_DIRECTORY
+    node $wd/set-publish.js $AWS_BUCKET $AWS_DIRECTORY
     printf "\npackage.json Updated!\n"
 
 
