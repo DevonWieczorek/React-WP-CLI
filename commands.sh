@@ -84,8 +84,13 @@ help() {
     command "-v" "--version" "Display the version"
     command "-i" "--init" "Initialize a new project"
     command "-c" "--configure" "Configure options for environment(s)"
-    command "" "" "     Usage: $APP_NAME [environment || *]"
+    command "" "" "     Usage: $APP_NAME --configure environment | *"
     command "-u" "--update" "Update core code from React Wordpress Microsite"
+    command "-p" "--plugin" "Install, Activate, Deactivate, or Uninstall a plugin"
+    command "" "" "     Install: $APP_NAME --plugin --install pluginName [repo] [path]"
+    command "" "" "     Activate: $APP_NAME --plugin --activate pluginName"
+    command "" "" "     Deactivate: $APP_NAME --plugin --deactivate pluginName"
+    command "" "" "     Uninstall: $APP_NAME --plugin --uninstall pluginName"
 
     # Boiler plate, do not remove
     print_all_commands

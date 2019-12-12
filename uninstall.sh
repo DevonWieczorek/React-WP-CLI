@@ -11,3 +11,5 @@ sed -i "" "s|alias react-wp=\"/usr/local/bin/.react-wp/react-wp-cli.sh \$@\"| |g
 
 # Refresh .bash_profile
 . ~/.bash_profile
+
+printf "\nreact-wp cli uninstalled.\n"

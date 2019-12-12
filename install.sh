@@ -7,7 +7,12 @@ sudo cp -rp ./ /usr/local/bin/.react-wp
 printf "\nCopied successfully to /usr/local/bin/.react-wp/:\n"
 ls -a /usr/local/bin/.react-wp
 
+# Install node dependencies
+printf"\nInstalling dependencies...\n"
+npm install
+
 # Create alias for our CLI
+printf"\nCreating alias...\n"
 echo "" >> ~/.bash_profile
 alias react-wp="/usr/local/bin/.react-wp/react-wp-cli.sh $@"
 echo 'alias react-wp="/usr/local/bin/.react-wp/react-wp-cli.sh $@"' >> ~/.bash_profile

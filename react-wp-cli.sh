@@ -7,12 +7,13 @@ source $wd/welcome.sh
 source $wd/mkfiles.sh
 source $wd/configure.sh
 source $wd/npm.sh
+source $wd/plugins.sh
 source $wd/update-core.sh
 
 # CLI Info
 APP_NAME="react-wp"
 APP_DESCRIPTION="CLI for updating .env files to configure new headless Wordpress sites"
-APP_VERSION="0.4.0"
+APP_VERSION="0.5.0"
 
 # Flags
 HELP=false
@@ -20,6 +21,7 @@ VERSION=false
 CONFIGURE=false
 INIT=false
 UPDATE=false
+PLUGINS=false
 
 # Variables
 env="*"
@@ -53,6 +55,12 @@ do
         UPDATE=true
         shift
     ;;
+    -p|--plugin)
+        PLUGINS=true
+        shift # Drop the --plugin arg
+        PLUGIN_ARGS="$@" # Capture the remaining args
+        for i in "$@"; do shift; done # Shift the remaining args to prevent errors
+    ;;
   esac
 done
 
@@ -67,6 +75,11 @@ if $CONFIGURE; then configure $env; fi
 
 if $UPDATE; then updateCore; fi
 
+if $PLUGINS; then handle_plugins $PLUGIN_ARGS; fi
+
 # We reached the end with no recognizable command
-echo "Unknown Command: '$*'"
-min_help
+if [[ $* != '' ]]
+then
+    echo "Unknown Command: '$*'"
+    min_help
+fi

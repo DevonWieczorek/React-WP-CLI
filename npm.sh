@@ -9,4 +9,6 @@ build() {
 
     printf "\nStarting App...\n"
     npm start
+
+    exit 0
 }

@@ -1,0 +1,25 @@
+{
+  "name": "react-wp",
+  "version": "0.5.0",
+  "description": "This CLI is used to install and configure the [React Wordpress Microsite](https://github.com/FluentCo/React-Wordpress-Microsite), which is a reusable project for a decoupled Wordpress as a CMS and an extensible React front end.",
+  "main": "sh react-wp-cli.sh",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FluentCo/React-WP-CLI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FluentCo/React-WP-CLI/issues"
+  },
+  "homepage": "https://github.com/FluentCo/React-WP-CLI#readme",
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "inquirer": "^7.0.0",
+    "node-find-folder": "^0.1.32",
+    "shelljs": "^0.8.3"
+  }
+}
