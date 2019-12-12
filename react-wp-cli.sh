@@ -13,7 +13,7 @@ source $wd/update-core.sh
 # CLI Info
 APP_NAME="react-wp"
 APP_DESCRIPTION="CLI for updating .env files to configure new headless Wordpress sites"
-APP_VERSION="0.5.0"
+APP_VERSION="0.5.2"
 
 # Flags
 HELP=false

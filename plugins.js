@@ -51,13 +51,7 @@ const errorInstallingPlugin = (err, code, plugin, repo, repoPath) => {
 }
 
 const tryInstallPlugin = (plugin, repo, repoPath) => {
-    if(!plugin){
-        throw new Error(chalk.red(`No plugin specified.`));
-
-        // TODO: implement
-        installAllFromJSON(plugin, repo, repoPath);
-        // return false;
-    }
+    if(!plugin) throw new Error(chalk.red(`No plugin specified.`));
 
     busy = true;
     console.log(chalk.yellow(`Checking to see if ${plugin} is already installed...`));
@@ -71,6 +65,7 @@ const tryInstallPlugin = (plugin, repo, repoPath) => {
     }
 }
 
+//TODO: Fix and implement
 const installAllFromJSON = (plugin, repo, repoPath) => {
     let stack = Object.keys(plugins.plugins).map(plugin => {
         let _plugin = plugins.plugins[plugin];
@@ -187,18 +182,70 @@ const uninstallPlugin = (plugin) => {
     console.log(chalk.green(`${plugin} successfully uninstalled.`));
 }
 
+const help = () => {
+    let menus = {
+        main: `
+            ${chalk.yellow('react-wp --plugin [flag] <options>')}
+
+            --install ....... Installs a plugin and adds it to plugins.json
+            --activate ...... Adds plugin export to plugins/index.js
+            --update ........ Pulls in the newest plugin code
+            --deactivate .... Removes the plugin's exports from plugins/index.js
+            --uninstall ..... Deletes all plugin files & removes the plugin from plugins.json
+            --help .......... Prints this help menu
+        `,
+        install: `
+            ${chalk.yellow('react-wp --plugin [--install | -I] [plugin] <repository> <path>')}
+
+            plugin .......... The name of the plugin to install
+            repository ...... The repository (if not default) to install from
+            path ............ The path to the plugin inside of the repository
+        `,
+        activate: `
+            ${chalk.yellow('react-wp --plugin [--activate | -A] [plugin]')}
+
+            plugin .......... The name of the plugin to activate
+        `,
+        update: `
+            ${chalk.yellow('react-wp --plugin [--update | -U] [plugin]')}
+
+            plugin .......... The name of the plugin to update
+        `,
+        dectivate: `
+            ${chalk.yellow('react-wp --plugin [--dectivate | -D] [plugin]')}
+
+            plugin .......... The name of the plugin to dectivate
+        `,
+        uninstall: `
+            ${chalk.yellow('react-wp --plugin [--uninstalled | -UnI] [plugin]')}
+
+            plugin .......... The name of the plugin to uninstall
+        `
+    }
+
+    for(let i in Object.keys(menus)){
+        let command = Object.keys(menus)[i];
+        let details = menus[command];
+
+        if(command !== 'menu') console.log(chalk.green(command));
+        console.log(details);
+    }
+}
+
 const run = () => {
+    shell.cd(`${PLUGIN_ROOT}`);
+
     let flag = commands[0];
     let plugin = commands[1];
     let repo = commands[2] || DEFAULT_REPO;
     let repoPath = commands[3] || plugin;
 
     switch(commands[0]){
-        case '-i':
+        case '-I':
         case '--install':
             tryInstallPlugin(plugin, repo, repoPath);
             break;
-        case '-a':
+        case '-A':
         case '--activate':
             tryActivatePlugin(plugin);
             break;
@@ -206,17 +253,21 @@ const run = () => {
         case '--deactivate':
             tryDeactivatePlugin(plugin);
             break;
-        case '-u':
+        case '-U':
         case '--update':
             updatePlugin(plugin, repo, repoPath);
             break;
-        case '-Un':
+        case '-UnI':
         case '--uninstall':
             confirm('uninstall', `Are you sure you want to uninstall ${plugin}?`)
                 .then(res => { if(res.uninstall) uninstallPlugin(plugin)  })
             break;
+        case '--help':
+            help();
+            break;
         default:
-            throw new Error(chalk.red(`${commands[0]} is an invalid argument.`));
+            throw new Error(chalk.red(`${commands[0]} is an invalid argument. Use react-wp --help for proper usage.`));
+            break;
     }
 }
 run();

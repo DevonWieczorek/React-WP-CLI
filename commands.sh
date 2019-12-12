@@ -77,20 +77,22 @@ print_all_commands() {
 
 # Print all commands and usage info
 help() {
-    printf "\nUsage: $APP_NAME [options...]\n\n"
+    printf "\nUsage: $APP_NAME [flag] <options...>\n\n"
 
     # Add/remove/update commands here to match commands that your cli supports
     command "-h" "--help" "Display this help message"
     command "-v" "--version" "Display the version"
     command "-i" "--init" "Initialize a new project"
     command "-c" "--configure" "Configure options for environment(s)"
-    command "" "" "     Usage: $APP_NAME --configure environment | *"
+    command "" "" "     Usage: $APP_NAME --configure [environment | *]"
     command "-u" "--update" "Update core code from React Wordpress Microsite"
-    command "-p" "--plugin" "Install, Activate, Deactivate, or Uninstall a plugin"
-    command "" "" "     Install: $APP_NAME --plugin --install pluginName [repo] [path]"
-    command "" "" "     Activate: $APP_NAME --plugin --activate pluginName"
-    command "" "" "     Deactivate: $APP_NAME --plugin --deactivate pluginName"
-    command "" "" "     Uninstall: $APP_NAME --plugin --uninstall pluginName"
+    command "-p" "--plugin" "Install, Activate, Update, Deactivate, or Uninstall a plugin"
+    command "" "" "     Usage: $APP_NAME --plugin [flag] <options...>"
+    command "" "" "     $APP_NAME --plugin --install [plugin] <repository> <path>"
+    command "" "" "     $APP_NAME --plugin --activate [plugin]"
+    command "" "" "     $APP_NAME --plugin --update [plugin]"
+    command "" "" "     $APP_NAME --plugin --deactivate [plugin]"
+    command "" "" "     $APP_NAME --plugin --uninstall [plugin]"
 
     # Boiler plate, do not remove
     print_all_commands
