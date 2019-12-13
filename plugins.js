@@ -7,6 +7,9 @@ const chalk = require("chalk");
 const shell = require("shelljs");
 const find_folder = require("node-find-folder");
 
+const utils = require("./node_utils");
+let menus = require("./plugin_menus");
+
 const PLUGIN_ROOT = new find_folder("plugins")[0];
 shell.cd(`${PLUGIN_ROOT}`);
 console.log(`Changed to ${shell.pwd()}`);
@@ -18,8 +21,6 @@ const DEFAULT_REPO = 'https://github.com/FluentCo/React-Wordpress-Microsite-Plug
 let busy = false;
 let plugins = JSON.parse(fs.readFileSync(PLUGIN_MANIFEST));
 let commands = process.argv.slice(2, process.argv.length);
-
-const wait = (time) => new Promise((resolve) => { setTimeout(() => { resolve() }, time) });
 
 const confirm = (name, question) => {
     return inquirer.prompt({name: name, type: 'confirm', message: question});
@@ -183,52 +184,21 @@ const uninstallPlugin = (plugin) => {
 }
 
 const help = () => {
-    let menus = {
-        main: `
-            ${chalk.yellow('react-wp --plugin [flag] <options>')}
-
-            --install ....... Installs a plugin and adds it to plugins.json
-            --activate ...... Adds plugin export to plugins/index.js
-            --update ........ Pulls in the newest plugin code
-            --deactivate .... Removes the plugin's exports from plugins/index.js
-            --uninstall ..... Deletes all plugin files & removes the plugin from plugins.json
-            --help .......... Prints this help menu
-        `,
-        install: `
-            ${chalk.yellow('react-wp --plugin [--install | -I] [plugin] <repository> <path>')}
-
-            plugin .......... The name of the plugin to install
-            repository ...... The repository (if not default) to install from
-            path ............ The path to the plugin inside of the repository
-        `,
-        activate: `
-            ${chalk.yellow('react-wp --plugin [--activate | -A] [plugin]')}
-
-            plugin .......... The name of the plugin to activate
-        `,
-        update: `
-            ${chalk.yellow('react-wp --plugin [--update | -U] [plugin]')}
-
-            plugin .......... The name of the plugin to update
-        `,
-        dectivate: `
-            ${chalk.yellow('react-wp --plugin [--dectivate | -D] [plugin]')}
-
-            plugin .......... The name of the plugin to dectivate
-        `,
-        uninstall: `
-            ${chalk.yellow('react-wp --plugin [--uninstalled | -UnI] [plugin]')}
-
-            plugin .......... The name of the plugin to uninstall
-        `
+    let headers = {
+        main: chalk.yellow('react-wp --plugin [flag] <options>'),
+        install: chalk.yellow('react-wp --plugin [--install | -I] [plugin] <repository> <path>'),
+        activate: chalk.yellow('react-wp --plugin [--activate | -A] [plugin]'),
+        update: chalk.yellow('react-wp --plugin [--update | -U] [plugin]'),
+        deactivate: chalk.yellow('react-wp --plugin [--dectivate | -D] [plugin]'),
+        uninstall: chalk.yellow('react-wp --plugin [--uninstall | -UnI] [plugin]')
     }
 
-    for(let i in Object.keys(menus)){
-        let command = Object.keys(menus)[i];
-        let details = menus[command];
+    for(let i in Object.keys(headers)){
+        let command = Object.keys(headers)[i];
 
-        if(command !== 'menu') console.log(chalk.green(command));
-        console.log(details);
+        (command !== 'main') ? console.log('\n\n' + chalk.green(`--${command}`)) : console.log('\n');
+        console.log(headers[command]);
+        utils.prettyColumns(menus[command]);
     }
 }
 
