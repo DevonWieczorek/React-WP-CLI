@@ -7,19 +7,16 @@ const chalk = require("chalk");
 const shell = require("shelljs");
 const find_folder = require("node-find-folder");
 
-const utils = require("./utils");
-let menus = require("./plugin_menus");
+const utils = require("../utils");
+let menus = require("./menus.plugins");
 
 const PLUGIN_ROOT = new find_folder("plugins")[0];
-shell.cd(`${PLUGIN_ROOT}`);
-
 const PLUGIN_INDEX = `index.js`;
 const PLUGIN_MANIFEST = `plugins.json`;
 const DEFAULT_REPO = 'https://github.com/FluentCo/React-Wordpress-Microsite-Plugins.git';
 
 let busy = false;
 let plugins = JSON.parse(fs.readFileSync(PLUGIN_MANIFEST));
-let commands = process.argv.slice(2, process.argv.length);
 
 const confirm = (name, question) => {
     return inquirer.prompt({name: name, type: 'confirm', message: question});
@@ -201,7 +198,7 @@ const help = () => {
     }
 }
 
-const run = () => {
+const runPlugins = (commands) => {
     shell.cd(`${PLUGIN_ROOT}`);
 
     let flag = commands[0];
@@ -235,8 +232,9 @@ const run = () => {
             help();
             break;
         default:
-            throw new Error(chalk.red(`${commands[0]} is an invalid argument. Use react-wp --help for proper usage.`));
+            throw new Error(chalk.red(`${commands[0]} is an invalid argument. Use react-wp --plugin --help for proper usage.`));
             break;
     }
 }
-run();
+
+module.exports = runPlugins;

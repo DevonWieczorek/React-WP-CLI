@@ -3,11 +3,9 @@
 wd="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $wd/commands.sh
 source $wd/clone-repo.sh
-source $wd/welcome.sh
 source $wd/mkfiles.sh
 source $wd/configure.sh
 source $wd/npm.sh
-source $wd/plugins.sh
 source $wd/update-core.sh
 
 # CLI Info
