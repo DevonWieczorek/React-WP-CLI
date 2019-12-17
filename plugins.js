@@ -12,7 +12,6 @@ let menus = require("./plugin_menus");
 
 const PLUGIN_ROOT = new find_folder("plugins")[0];
 shell.cd(`${PLUGIN_ROOT}`);
-console.log(`Changed to ${shell.pwd()}`);
 
 const PLUGIN_INDEX = `index.js`;
 const PLUGIN_MANIFEST = `plugins.json`;
