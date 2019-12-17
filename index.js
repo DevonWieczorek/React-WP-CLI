@@ -3,6 +3,7 @@
 const shell = require('shelljs');
 const cli = require('./types');
 const welcome = require('./welcome');
+const help = require('./help');
 
 let commands = process.argv.slice(2, process.argv.length);
 
@@ -18,7 +19,7 @@ const run = () => {
     switch(commands[0]){
         case '-h':
         case '--help':
-            console.log('help');
+            help();
             break;
         case '-v':
         case '--version':
