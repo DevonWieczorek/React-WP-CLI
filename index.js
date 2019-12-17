@@ -6,8 +6,6 @@ const welcome = require('./welcome');
 
 let commands = process.argv.slice(2, process.argv.length);
 
-const wd = () => shell.pwd().toString();
-
 const version = () => {
     console.log(chalk.green(`${cli.APP_NAME} cli`));
     console.log(chalk.green(`Version: ${cli.APP_VERSION}`));

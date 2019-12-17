@@ -7,7 +7,7 @@ const chalk = require("chalk");
 const shell = require("shelljs");
 const find_folder = require("node-find-folder");
 
-const utils = require("./node_utils");
+const utils = require("./utils");
 let menus = require("./plugin_menus");
 
 const PLUGIN_ROOT = new find_folder("plugins")[0];

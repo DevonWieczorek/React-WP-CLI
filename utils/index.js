@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+const wd = () => shell.pwd().toString();
+
 const wait = (time) => new Promise((resolve) => { setTimeout(() => { resolve() }, time) });
 
 const prettyColumns = (table) => {
@@ -70,6 +72,7 @@ const prettyColumns = (table) => {
 }
 
 module.exports = {
+    wd,
     wait,
     prettyColumns
 }

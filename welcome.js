@@ -2,7 +2,6 @@
 
 const chalk = require('chalk');
 const figlet = require('figlet');
-const shell = require('shelljs');
 const cli = require('./types');
 
 const line = () => {
