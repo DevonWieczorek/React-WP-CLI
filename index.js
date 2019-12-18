@@ -7,6 +7,7 @@ const welcome = require('./welcome');
 const help = require('./help');
 //const plugins = require('./plugins');
 const configure = require('./configure');
+const init = require('./init');
 
 let commands = process.argv.slice(2, process.argv.length);
 
@@ -30,7 +31,7 @@ const run = () => {
             break;
         case '-i':
         case '--init':
-            welcome(); //placeholder
+            init();
             break;
         case '-c':
         case '--configure':
