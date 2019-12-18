@@ -11,7 +11,7 @@ const meta = require("./meta.questions");
 const gtm = require("./gtm.questions");
 const aws = require("./aws.questions");
 
-let aws = {
+let awsOpts = {
     bucket: '',
     directory: ''
 }
@@ -43,8 +43,8 @@ const configure = async (env = '*') => {
         let answers = await askQuestions(questions);
 
         // Grab our AWS options
-        aws.bucket = answers.REACT_APP_DEFAULT_AWS_BUCKET;
-        aws.directory = answers.REACT_APP_DEFAULT_AWS_DIRECTORY;
+        awsOpts.bucket = answers.REACT_APP_DEFAULT_AWS_BUCKET;
+        awsOpts.directory = answers.REACT_APP_DEFAULT_AWS_DIRECTORY;
 
         Object.keys(answers).map(key => {
 
@@ -64,7 +64,7 @@ const runConfiguration = () => {
     utils.cdProjectRoot();
 
     configure()
-        .then(() => { setPublishCommand(aws.bucket, aws.directory) })
+        .then(() => { setPublishCommand(awsOpts.bucket, awsOpts.directory) })
         .catch(e => { console.log(chalk.red(e)) });
 }
 

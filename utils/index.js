@@ -5,7 +5,7 @@ const shell = require("shelljs");
 const wd = () => shell.pwd().toString();
 
 const cdProjectRoot = () => {
-    shell.cd(`${shell.exec(npm root)}`); // cd to node_modules
+    shell.cd(`${shell.exec('npm root')}`); // cd to node_modules
     shell.cd('../'); // then cd one level up
 }
 

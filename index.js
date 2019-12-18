@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+const chalk = require('chalk');
 const shell = require('shelljs');
 const cli = require('./types');
 const welcome = require('./welcome');
@@ -10,8 +11,8 @@ const configure = require('./configure');
 let commands = process.argv.slice(2, process.argv.length);
 
 const version = () => {
-    console.log(chalk.green(`${cli.APP_NAME} cli`));
-    console.log(chalk.green(`Version: ${cli.APP_VERSION}`));
+    console.log(chalk.green(`\n${cli.APP_NAME} cli`));
+    console.log(chalk.green(`Version: ${cli.APP_VERSION}\n`));
 }
 
 const run = () => {
