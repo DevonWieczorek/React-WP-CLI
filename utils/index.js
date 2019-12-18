@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const shell = require("shelljs");
+const inquirer = require("inquirer");
 
 const wd = () => shell.pwd().toString();
 
@@ -10,6 +11,10 @@ const cdProjectRoot = () => {
 }
 
 const wait = (time) => new Promise((resolve) => { setTimeout(() => { resolve() }, time) });
+
+const confirm = (name, question) => {
+    return inquirer.prompt({name: name, type: 'confirm', message: question});
+}
 
 const prettyColumns = (table) => {
     const DEFAULT_BUFFER = 5;
@@ -82,5 +87,6 @@ module.exports = {
     wd,
     cdProjectRoot,
     wait,
+    confirm,
     prettyColumns
 }

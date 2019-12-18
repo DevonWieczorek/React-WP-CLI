@@ -8,6 +8,7 @@ const help = require('./help');
 //const plugins = require('./plugins');
 const configure = require('./configure');
 const init = require('./init');
+const update = require('./update');
 
 let commands = process.argv.slice(2, process.argv.length);
 
@@ -39,7 +40,7 @@ const run = () => {
             break;
         case '-u':
         case '--update':
-            console.log('update')
+            update();
             break;
         case '-p':
         case '--plugin':
