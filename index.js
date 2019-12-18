@@ -43,7 +43,7 @@ const run = () => {
         case '-p':
         case '--plugin':
             //plugins(...args);
-            console.log('--plugin', ...args)
+            console.log('plugin');
             break;
         default:
             throw new Error(chalk.red(`${commands[0]} is an invalid argument. Use react-wp --help for proper usage.`));
