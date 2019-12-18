@@ -5,6 +5,7 @@ const cli = require('./types');
 const welcome = require('./welcome');
 const help = require('./help');
 //const plugins = require('./plugins');
+const configure = require('./configure');
 
 let commands = process.argv.slice(2, process.argv.length);
 
@@ -32,7 +33,7 @@ const run = () => {
             break;
         case '-c':
         case '--configure':
-            console.log('configure')
+            configure();
             break;
         case '-u':
         case '--update':

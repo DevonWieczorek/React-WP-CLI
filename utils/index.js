@@ -1,6 +1,13 @@
 #!/usr/bin/env node
 
+const shell = require("shelljs");
+
 const wd = () => shell.pwd().toString();
+
+const cdProjectRoot = () => {
+    shell.cd(`${shell.exec(npm root)}`); // cd to node_modules
+    shell.cd('../'); // then cd one level up
+}
 
 const wait = (time) => new Promise((resolve) => { setTimeout(() => { resolve() }, time) });
 
@@ -73,6 +80,7 @@ const prettyColumns = (table) => {
 
 module.exports = {
     wd,
+    cdProjectRoot,
     wait,
     prettyColumns
 }
