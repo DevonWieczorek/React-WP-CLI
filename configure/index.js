@@ -54,18 +54,23 @@ const configure = async (env = '*') => {
             // Wrap in quotes
             if(answers[key].slice(0,1) === '#' || answers[key].indexOf(' ') !== -1) answers[key] = `"${answers[key]}"`;
 
-            console.log(key, answers[key])
-            //replaceEnvVar(key, answers[key], env);
+            replaceEnvVar(key, answers[key], env);
         })
     })
 }
 
 const runConfiguration = () => {
-    utils.cdProjectRoot();
+    return new Promise((resolve, reject) => {
+        utils.cdProjectRoot();
 
-    configure()
-        .then(() => { setPublishCommand(awsOpts.bucket, awsOpts.directory) })
-        .catch(e => { console.log(chalk.red(e)) });
+        configure()
+            .then(() => {
+                setPublishCommand(awsOpts.bucket, awsOpts.directory)
+                    .then(() => resolve())
+                    .catch(e => reject(e));
+            })
+            .catch(e => reject(e));
+    });
 }
 
 module.exports = runConfiguration;

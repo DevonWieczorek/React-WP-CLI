@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+const chalk = require("chalk");
 const cloneRepo = require("./clone-repo");
 const cloneEnvFiles = require("./clone-env");
 const runBuild = require("./run-build");
@@ -10,8 +11,9 @@ const init = () => {
     cloneRepo();
     welcome();
     cloneEnvFiles();
-    configure('*');
-    runBuild();
+    configure('*')
+        .then(() => runBuild())
+        .catch(e => console.log(chalk.red(e)))
 }
 
 module.exports = init;
