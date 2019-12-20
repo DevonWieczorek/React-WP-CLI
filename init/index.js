@@ -2,7 +2,7 @@
 
 const cloneRepo = require("./clone-repo");
 const cloneEnvFiles = require("./clone-env");
-const runBuild = require("run-build");
+const runBuild = require("./run-build");
 const welcome = require("../welcome");
 const configure = require("../configure");
 
