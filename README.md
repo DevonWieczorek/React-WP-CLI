@@ -8,7 +8,7 @@ git init
 git remote add origin https://github.com/FluentCo/React-WP-CLI.git
 git pull origin master
 ```
-2. Then run the installation using `sh install.sh` in the same directory you just installed the repo. You may need `sudo` privileges to run this script.
+2. Then run the installation using `npm run-script install` in the same directory you just installed the repo.
 
 
 ## Usage
@@ -20,7 +20,3 @@ Once installed, this CLI should be available from any directory. Simply run `rea
 - `-c, --configure`: Configure options for a specific environment, or configure all by passing `*` as the environment name
 - `-u, --update`: Update the core code in an existing React Wordpress Microsite project
 -  `-p, --plugin`: Install, Activate, Update, Deactivate, or Uninstall a plugin
-
-## Uninstallation
-This CLI can also be uninstalled by `cd /user/local/bin/.react-cli` and then running `sh uninstall.sh`.
-You may need `sudo` privileges to run this script.
