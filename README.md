@@ -8,7 +8,7 @@ git init
 git remote add origin https://github.com/FluentCo/React-WP-CLI.git
 git pull origin master
 ```
-2. Then run the installation using `npm run-script install` in the same directory you just installed the repo.
+2. Then run the installation using `node install.js` in the same directory you just installed the repo.
 
 
 ## Usage
