@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
 const fs = require('fs');
+const chalk = require("chalk");
 const shell = require("shelljs");
 
 const setPublishCommand = (bucket, directory) => {
@@ -19,8 +20,11 @@ const setPublishCommand = (bucket, directory) => {
             package.scripts.publish = cmd.replace(regex, `s3://${bucket}/${directory}/`);
         }
 
-        fs.writeFileSync('package.json', JSON.stringify(package));
-        (shell.code !== -1) ? resolve() : reject();
+        fs.writeFile('package.json', JSON.stringify(package), (err) => {
+            if(err) reject(err);
+            console.log(chalk.green('package.json updated!'))
+            resolve();
+        });
     });
 }
 

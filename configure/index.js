@@ -43,22 +43,27 @@ const configure = async (env = '*') => {
     }
 
     return new Promise(async (resolve, reject) => {
-        let answers = await askQuestions(questions);
+        try{
+            let answers = await askQuestions(questions);
 
-        // Grab our AWS options
-        awsOpts.bucket = answers.REACT_APP_DEFAULT_AWS_BUCKET;
-        awsOpts.directory = answers.REACT_APP_DEFAULT_AWS_DIRECTORY;
+            // Grab our AWS options
+            awsOpts.bucket = answers.REACT_APP_DEFAULT_AWS_BUCKET;
+            awsOpts.directory = answers.REACT_APP_DEFAULT_AWS_DIRECTORY;
 
-        Object.keys(answers).map(key => {
+            Object.keys(answers).map(key => {
 
-            // Replace double quotes with single quotes
-            answers[key] = answers[key].replace(/"/g, "'");
+                // Replace double quotes with single quotes
+                answers[key] = answers[key].replace(/"/g, "'");
 
-            // Wrap in quotes
-            if(answers[key].slice(0,1) === '#' || answers[key].indexOf(' ') !== -1) answers[key] = `"${answers[key]}"`;
+                // Wrap in quotes
+                if(answers[key].slice(0,1) === '#' || answers[key].indexOf(' ') !== -1) answers[key] = `"${answers[key]}"`;
 
-            replaceEnvVar(key, answers[key], files);
-        })
+                replaceEnvVar(key, answers[key], files);
+            })
+
+            resolve();
+        }
+        catch(e){ reject(e) }
     })
 }
 
@@ -68,9 +73,10 @@ const runConfiguration = () => {
 
         configure()
             .then(() => {
+                console.log(chalk.green('.env files updated!'))
                 setPublishCommand(awsOpts.bucket, awsOpts.directory)
-                    .then(() => resolve())
-                    .catch(e => reject(e));
+                    .then(() => { resolve() })
+                    .catch(e => { reject(e) });
             })
             .catch(e => reject(e));
     });

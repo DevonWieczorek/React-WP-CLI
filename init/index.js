@@ -19,7 +19,7 @@ const init = () => {
     welcome();
     cloneEnvFiles();
     configure('*')
-        .then(() => runBuild())
+        .then(() => { runBuild() })
         .catch(e => console.log(chalk.red(e)))
 
 }
