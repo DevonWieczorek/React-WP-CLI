@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
 const fs = require('fs');
+const shell = require("shelljs");
 
 const setPublishCommand = (bucket, directory) => {
     return new Promise((resolve, reject) => {
@@ -19,7 +20,7 @@ const setPublishCommand = (bucket, directory) => {
         }
 
         fs.writeFileSync('package.json', JSON.stringify(package));
-        resolve();
+        (shell.code !== -1) ? resolve() : reject();
     });
 }
 

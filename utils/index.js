@@ -5,6 +5,8 @@ const inquirer = require("inquirer");
 
 const wd = () => shell.pwd().toString();
 
+const cliDir = () => process.argv[1].split('/index.js')[0];
+
 const cdProjectRoot = () => {
     shell.cd(`${shell.exec('npm root')}`); // cd to node_modules
     shell.cd('../'); // then cd one level up
@@ -85,6 +87,7 @@ const prettyColumns = (table) => {
 
 module.exports = {
     wd,
+    cliDir,
     cdProjectRoot,
     wait,
     confirm,

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const chalk = require("chalk");
+const shell = require("shelljs");
 const inquirer = require("inquirer");
 const setPublishCommand = require("./set-publish");
 const utils = require("../utils");
@@ -27,7 +28,9 @@ let questions = [
 const askQuestions = (questions) => inquirer.prompt(questions);
 
 const replaceEnvVar = (search, replacement, files) => {
-    shell.sed('-i', `/^${search}=.*$/`, `${search}=${replacement}`, files);
+    let regex = new RegExp(`^${search}=.*$`);
+    let _replacement = `${search}=${replacement}`;
+    shell.sed('-i', regex, _replacement, files);
 }
 
 const configure = async (env = '*') => {
@@ -36,7 +39,7 @@ const configure = async (env = '*') => {
         files = ['.env.development', '.env.staging', '.env.production'];
     }
     else{
-        for(let e in env) files.push(`.env.${env[e]}`)
+        for(let e in files) files.push(`.env.${files[e]}`)
     }
 
     return new Promise(async (resolve, reject) => {
@@ -54,7 +57,7 @@ const configure = async (env = '*') => {
             // Wrap in quotes
             if(answers[key].slice(0,1) === '#' || answers[key].indexOf(' ') !== -1) answers[key] = `"${answers[key]}"`;
 
-            replaceEnvVar(key, answers[key], env);
+            replaceEnvVar(key, answers[key], files);
         })
     })
 }

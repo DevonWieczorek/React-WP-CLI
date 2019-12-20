@@ -5,7 +5,7 @@ const shell = require('shelljs');
 const cli = require('./types');
 const welcome = require('./welcome');
 const help = require('./help');
-const plugins = require('./plugins');
+//const plugins = require('./plugins');
 const configure = require('./configure');
 const init = require('./init');
 const update = require('./update');
@@ -44,7 +44,7 @@ const run = () => {
             break;
         case '-p':
         case '--plugin':
-            plugins(args);
+            //plugins(args);
             break;
         default:
             throw new Error(chalk.red(`${commands[0]} is an invalid argument. Use react-wp --help for proper usage.`));

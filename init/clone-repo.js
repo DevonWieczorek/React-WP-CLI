@@ -9,10 +9,10 @@ const cloneRepo = () => {
         git remote add source_main https://github.com/FluentCo/React-Wordpress-Microsite.git
         git remote add source_plugins https://github.com/FluentCo/React-Wordpress-Microsite-Plugins.git
         git pull source_main master
-        ${console.log(chalk.green('\nFetched code from repository.\n'))}
         git add .
         git commit -a -m "Initial Commit"
     `);
+    console.log(chalk.green('\nFetched code from repository.\n'))
 }
 
 module.exports = cloneRepo;
