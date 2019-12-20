@@ -4,10 +4,10 @@ const chalk = require("chalk");
 const shell = require("shelljs");
 
 const runBuild = () => {
-    console.log(chalk.blue('\nRunning Build...\n'));
+    console.log(chalk.cyan('\nRunning Build...\n'));
     shell.exec('npm run-script build');
 
-    console.log(chalk.blue('\nStarting App...\n'));
+    console.log(chalk.cyan('\nStarting App...\n'));
     shell.exec('npm start');
 }
 
