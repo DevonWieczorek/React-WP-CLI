@@ -2,15 +2,7 @@ This CLI is used to install and configure the [React Wordpress Microsite](https:
 
 
 ## Installation
-1. Clone this repository to your local machine by doing the following:
-```
-git init
-git remote add origin https://github.com/FluentCo/React-WP-CLI.git
-git pull origin master
-```
-2. Then install the library globally by running `npm install -g i .` in the same directory you just installed the repo.
-Once installed, you have the option to manually delete the cloned repo as it has been copied to your global `node_modules` folder.
-
+To install this library globally, run `npm i react-wp-cli -g`.
 
 ## Usage
 Once installed, this CLI should be available from any directory. Simply run `react-wp [command] [arguments]`.
@@ -23,4 +15,4 @@ Once installed, this CLI should be available from any directory. Simply run `rea
 -  `-p, --plugin`: Install, Activate, Update, Deactivate, or Uninstall a plugin
 
 ## Uninstallation
-This library can be uninstalled just like any other npm package by running `npm uninstall -g react-wp`.
+This library can be uninstalled just like any other npm package by running `npm uninstall -g react-wp-cli`.
