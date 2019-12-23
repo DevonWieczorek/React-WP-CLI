@@ -4,7 +4,18 @@ const chalk = require('chalk');
 const shell = require('shelljs');
 
 const install = () => {
-    // npm will copy this folder to the bin and mark it as executable
+
+    // Copy our library to the bin
+    shell.chmod('+x', './index.js');
+    shell.mkdir('/usr/local/bin/.react-wp');
+    shell.cp('-rp', './', '/usr/local/bin/.react-wp');
+    console.log(chalk.green('\nCopied successfully to /usr/local/bin/.react-wp/:\n'));
+
+    // Print our library files for confirmation
+    shell.cd('/usr/local/bin/.react-wp');
+    shell.ls('-a', '.');
+
+    // npm will create a symlink for this folder and mark it excecutable 
     shell.exec('npm link');
     console.log(chalk.green('\nreact-wp installed!\n'));
 
