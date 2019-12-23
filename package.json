@@ -2,7 +2,7 @@
   "name": "react-wp",
   "version": "1.0.0",
   "description": "This CLI is used to install and configure the [React Wordpress Microsite](https://github.com/FluentCo/React-Wordpress-Microsite), which is a reusable project for a decoupled Wordpress as a CMS and an extensible React front end.",
-  "main": "sh react-wp-cli.sh",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,6 +24,6 @@
     "shelljs": "^0.8.3"
 },
 "bin": {
-    "react-wp": "./index.js"
+    "react-wp": "index.js"
   }
 }
