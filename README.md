@@ -1,4 +1,4 @@
-This CLI is used to install and configure the [React Wordpress Microsite](https://github.com/FluentCo/React-Wordpress-Microsite), which is a reusable project for a decoupled Wordpress as a CMS and an extensible React front end.
+This CLI is used to install and configure the [React Wordpress Microsite](https://github.com/DevonWieczorek/React-Wordpress-Microsite), which is a reusable project for a decoupled Wordpress as a CMS and an extensible React front end.
 
 
 ## Installation
